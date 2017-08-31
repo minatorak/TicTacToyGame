@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.minato.tictactoygame.MainActivity">
+
+
+
+    <TableLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableRow
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn1"
+                style="@style/ButtonTable"
+                android:onClick="btnClick" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn2"
+                style="@style/ButtonTable"
+                android:onClick="btnClick" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn3"
+                style="@style/ButtonTable"
+                android:onClick="btnClick" />
+        </TableRow>
+
+        <TableRow
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn4"
+                style="@style/ButtonTable"
+                android:onClick="btnClick" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn5"
+                style="@style/ButtonTable"
+                android:onClick="btnClick" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn6"
+                style="@style/ButtonTable"
+                android:onClick="btnClick" />
+        </TableRow>
+
+        <TableRow
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn7"
+                style="@style/ButtonTable"
+                android:onClick="btnClick" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn8"
+                style="@style/ButtonTable"
+                android:onClick="btnClick" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn9"
+                style="@style/ButtonTable"
+                android:onClick="btnClick" />
+
+        </TableRow>
+    </TableLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>
