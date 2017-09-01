@@ -8,52 +8,82 @@ import android.widget.Toast
 
 
 class MainActivity : AppCompatActivity() {
+    var click: Boolean = true
+    var player1 = ArrayList<Int>()
+    var player2 = ArrayList<Int>()
+    var nowPlayer = 1
+    val PlayerN:String = "ผู้เล่น"
+    val PlayerAi:String = "Ai"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
 
-    protected fun btnClick(view: View){
-        val Selected:AppCompatButton = view as AppCompatButton
+    fun btnClick(view: View) {
+        val Selected: AppCompatButton = view as AppCompatButton
         var idButton = 0
-        when(Selected.id){
-            R.id.btn1 -> idButton =11
-            R.id.btn2 -> idButton =12
-            R.id.btn3 -> idButton =13
-            R.id.btn4 -> idButton =21
-            R.id.btn5 -> idButton =22
-            R.id.btn6 -> idButton =23
-            R.id.btn7 -> idButton =31
-            R.id.btn8 -> idButton =32
-            R.id.btn9 -> idButton =33
+        when (Selected.id) {
+            R.id.btn1 -> idButton = 11
+            R.id.btn2 -> idButton = 12
+            R.id.btn3 -> idButton = 13
+
+            R.id.btn4 -> idButton = 21
+            R.id.btn5 -> idButton = 22
+            R.id.btn6 -> idButton = 23
+
+            R.id.btn7 -> idButton = 31
+            R.id.btn8 -> idButton = 32
+            R.id.btn9 -> idButton = 33
         }
-        PlayGame(idButton,Selected)
-        Toast.makeText(this,"ID Click :$idButton",Toast.LENGTH_SHORT).show()
+        playGame(idButton, Selected)
+        Toast.makeText(this, "ID Click :$idButton", Toast.LENGTH_SHORT).show()
     }
 
-    var player1 = ArrayList<Int>()
-    var player2 = ArrayList<Int>()
-    var nowPlayer = 1
 
-    fun PlayGame(idButton:Int,view:AppCompatButton){
-        var CheckPoint:ArrayList<Int>
-        if (nowPlayer==1){
-            view.text = "X"
-            player1.add(idButton)
-            CheckPoint = player1
-            nowPlayer = 0
-        }else{
-            view.text = "O"
-            player2.add(idButton)
-            CheckPoint = player2
-            nowPlayer = 1
+
+    fun playGame(idButton: Int, view: AppCompatButton) {
+        if (click) {
+            val CheckPoint: ArrayList<Int>
+            if (nowPlayer == 1) {
+                view.text = "X"
+                player1.add(idButton)
+                CheckPoint = player1
+                nowPlayer = 0
+            } else {
+                view.text = "O"
+                player2.add(idButton)
+                CheckPoint = player2
+                nowPlayer = 1
+            }
+            view.isEnabled = false
+            checkWin(CheckPoint)
         }
-        view.isEnabled = false
-        CheckWin(CheckPoint)
     }
 
-    fun CheckWin(Point:ArrayList<Int>){
+    fun checkWin(Point: ArrayList<Int>) {
+        if (Point.contains(11) && Point.contains(12) && Point.contains(13)) {
+            gameEnd()
+        }else if (Point.contains(21) && Point.contains(22) && Point.contains(23)){
+            gameEnd()
+        }else if (Point.contains(31) && Point.contains(32) && Point.contains(33)){
+            gameEnd()
+        }else if(Point.contains(11) && Point.contains(21) && Point.contains(31)){
+            gameEnd()
+        }else if(Point.contains(12) && Point.contains(22) && Point.contains(32)){
+            gameEnd()
+        }else if(Point.contains(13) && Point.contains(23) && Point.contains(33)){
+            gameEnd()
+        }else if(Point.contains(11) && Point.contains(22) && Point.contains(33)){
+            gameEnd()
+        }else if(Point.contains(13) && Point.contains(22) && Point.contains(31)){
+            gameEnd()
+        }
+
+    }
+
+    fun gameEnd(){
+        click = false
 
 
     }
