@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.widget.AppCompatButton
 import android.view.View
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -18,12 +19,30 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+    }
+    fun onClickResetGame(view: View){
+        btn1.text = " "
+        btn2.text = " "
+        btn3.text = " "
+        btn4.text = " "
+        btn5.text = " "
+        btn6.text = " "
+        btn7.text = " "
+        btn8.text = " "
+        btn9.text = " "
+
+        nowPlayer = 1
+        player1 = ArrayList<Int>()
+        player2 = ArrayList<Int>()
+        click = true
     }
 
     fun btnClick(view: View) {
         val Selected: AppCompatButton = view as AppCompatButton
         var idButton = 0
         when (Selected.id) {
+
             R.id.btn1 -> idButton = 11
             R.id.btn2 -> idButton = 12
             R.id.btn3 -> idButton = 13
@@ -35,6 +54,7 @@ class MainActivity : AppCompatActivity() {
             R.id.btn7 -> idButton = 31
             R.id.btn8 -> idButton = 32
             R.id.btn9 -> idButton = 33
+
         }
         playGame(idButton, Selected)
         Toast.makeText(this, "ID Click :$idButton", Toast.LENGTH_SHORT).show()
@@ -49,6 +69,7 @@ class MainActivity : AppCompatActivity() {
                 view.text = "X"
                 player1.add(idButton)
                 CheckPoint = player1
+                checkWin(CheckPoint)
                 nowPlayer = 0
             } else {
                 view.text = "O"
@@ -79,12 +100,10 @@ class MainActivity : AppCompatActivity() {
         }else if(Point.contains(13) && Point.contains(22) && Point.contains(31)){
             gameEnd()
         }
-
     }
+
 
     fun gameEnd(){
         click = false
-
-
     }
 }
